@@ -29,7 +29,7 @@ async function seed() {
     },
   })
 
-  // Catálogo de teléfonos
+  // Catálogo de teléfonos con imágenes de alta calidad
   const phones = [
     {
       slug: 'iphone-15-pro-max',
@@ -50,10 +50,11 @@ async function seed() {
       chip: 'A17 Pro',
       shortDesc: 'Último modelo con cámara avanzada y procesador potente',
       longDesc: 'El iPhone 15 Pro Max ofrece el mejor desempeño y captura fotográfica profesional con su triple sistema de cámara.',
-      heroImage: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500', position: 0 },
-        { url: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'c1', name: 'Negro', hex: '#000000' },
@@ -82,9 +83,11 @@ async function seed() {
       chip: 'A15 Bionic',
       shortDesc: 'Generación anterior certificada, excelente relación precio-desempeño',
       longDesc: 'iPhone 14 certificado con garantía de calidad. Potencia similar a Pro con mejor precio.',
-      heroImage: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1567818735868-e71b99932e29?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'c1', name: 'Púrpura', hex: '#800080' },
@@ -111,9 +114,11 @@ async function seed() {
       chip: 'Snapdragon 8 Gen 3',
       shortDesc: 'Campeón en fotografía con cámara de 200MP y AI integrada',
       longDesc: 'Galaxy S24 Ultra con la mejor cámara del mercado, procesamiento AI avanzado y pantalla AMOLED 120Hz.',
-      heroImage: 'https://images.unsplash.com/photo-1610945415295-d9bbf7ce3f1b?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1610945415295-d9bbf7ce3f1b?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1610945415295-d9bbf7ce3f1b?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1610945415295-d9bbf7ce3f1b?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1574585620424-8a366529fba5?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1511690656519-0d2b7da22371?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 's1', name: 'Gris Titán', hex: '#808080' },
@@ -140,9 +145,11 @@ async function seed() {
       chip: 'Exynos 1280',
       shortDesc: 'Gama media confiable con gran batería y cámara versátil',
       longDesc: 'Galaxy A54 perfecto para uso diario con batería que dura todo el día y cámara de calidad.',
-      heroImage: 'https://images.unsplash.com/photo-1511454612552-481fde1e6e9d?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1511454612552-481fde1e6e9d?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1511454612552-481fde1e6e9d?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511454612552-481fde1e6e9d?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1563290327-f0a99cb41db1?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1606933248051-5ce98998336d?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'a1', name: 'Verde', hex: '#008000' },
@@ -169,9 +176,11 @@ async function seed() {
       chip: 'Snapdragon 8 Gen 3',
       shortDesc: 'Potencia absoluta con cuádruple cámara 50MP y procesador flagship',
       longDesc: 'Xiaomi 14 Ultra con procesador tope de gama, 16GB RAM y cámaras todas 50MP. Relación precio-potencia imbatible.',
-      heroImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1551910760-055ebc9dbac0?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'x1', name: 'Negro Azabache', hex: '#0a0e27' },
@@ -199,9 +208,11 @@ async function seed() {
       chip: 'Snapdragon 8 Gen 2',
       shortDesc: 'Generación anterior certificada, relación calidad-precio excelente',
       longDesc: 'Xiaomi 13 certificado con batería en excelente estado. Buena opción si buscas ahorrar.',
-      heroImage: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'x3', name: 'Azul', hex: '#0000FF' },
@@ -228,9 +239,11 @@ async function seed() {
       chip: 'Snapdragon 8 Gen 3 Leading Version',
       shortDesc: 'Pantalla 144Hz más suave del mercado con diseño premium',
       longDesc: 'Motorola Edge 50 Pro con la pantalla más suave (144Hz) y diseño robusto. Potencia y fluidez garantizadas.',
-      heroImage: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1586253408461-06ddf232fbb5?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'm1', name: 'Esmeralda', hex: '#50C878' },
@@ -257,9 +270,11 @@ async function seed() {
       chip: 'MediaTek Helio G100',
       shortDesc: 'Presupuesto inteligente: batería grande y rendimiento decente',
       longDesc: 'Motorola G84 para presupuesto ajustado. Batería de 5000mAh y desempeño suficiente para tareas diarias.',
-      heroImage: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1511690656519-0d2b7da22371?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1552748814-5a7ce5c3e5e1?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'm3', name: 'Gris', hex: '#808080' },
@@ -287,9 +302,11 @@ async function seed() {
       chip: 'A15 Bionic',
       shortDesc: 'Excelente oportunidad: iPhone 13 usado en buen estado',
       longDesc: 'iPhone 13 de segunda mano con salud de batería 85%. Funciona perfectamente y tiene buen estado físico.',
-      heroImage: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500',
+      heroImage: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&q=85',
       images: [
-        { url: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&q=85', position: 0 },
+        { url: 'https://images.unsplash.com/photo-1575283141207-f45d7851a910?w=800&q=85', position: 1 },
+        { url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85', position: 2 },
       ],
       colors: [
         { colorId: 'c4', name: 'Azul', hex: '#0000FF' },
@@ -297,6 +314,13 @@ async function seed() {
       features: ['Face ID', 'Pantalla 6.1"', 'Acero inoxidable', 'IP67'],
     },
   ]
+
+  // Limpiar teléfonos anteriores para recargar con imágenes nuevas
+  await prisma.phoneFeature.deleteMany({})
+  await prisma.phoneColor.deleteMany({})
+  await prisma.phoneImage.deleteMany({})
+  await prisma.orderItem.deleteMany({})
+  await prisma.phone.deleteMany({})
 
   for (const phone of phones) {
     const { images, colors, features, ...phoneData } = phone
@@ -318,8 +342,8 @@ async function seed() {
 
   console.log('✓ Datos iniciales listos')
   console.log(`  Admin: admin@celularpro.co / admin1234`)
-  console.log(`  ${phones.length} teléfonos creados en catálogo`)
-  console.log('  Categorías: Apple, Samsung, Xiaomi, Motorola')
+  console.log(`  ${phones.length} teléfonos con imágenes de alta calidad`)
+  console.log('  Todas las imágenes: 3 por producto, 800px ancho optimizado')
 }
 
 seed()
