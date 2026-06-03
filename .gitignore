@@ -1,29 +1,5 @@
-# Dependencias
-node_modules/
-db/node_modules/
-
-# Variables de entorno
+﻿node_modules
+dist
 .env
 .env.local
-.env.*.local
-
-# Docker volumes (datos persistentes)
-pgdata/
-
-# Logs
-*.log
-npm-debug.log*
-
-# Sistema operativo
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editores
-.idea/
-*.swp
-*.swo
-
-# Builds
-dist/
-build/
+*.js.map
