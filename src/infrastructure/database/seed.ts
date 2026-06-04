@@ -239,11 +239,11 @@ async function seed() {
       chip: 'Snapdragon 8 Gen 3 Leading Version',
       shortDesc: 'Pantalla 144Hz más suave del mercado con diseño premium',
       longDesc: 'Motorola Edge 50 Pro con la pantalla más suave (144Hz) y diseño robusto. Potencia y fluidez garantizadas.',
-      heroImage: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=85',
+      heroImage: 'https://celulibre.com/97-large_default/motorola-moto-edge-50-pro-512-gb.jpg',
       images: [
-        { url: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=85', position: 0 },
-        { url: 'https://images.unsplash.com/photo-1586253408461-06ddf232fbb5?w=800&q=85', position: 1 },
-        { url: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=85', position: 2 },
+        { url: 'https://celulibre.com/97-large_default/motorola-moto-edge-50-pro-512-gb.jpg', position: 0 },
+        { url: 'https://celulibre.com/99-large_default/motorola-moto-edge-50-pro-512-gb.jpg', position: 1 },
+        { url: 'https://celulibre.com/100-large_default/motorola-moto-edge-50-pro-512-gb.jpg', position: 2 },
       ],
       colors: [
         { colorId: 'm1', name: 'Esmeralda', hex: '#50C878' },
