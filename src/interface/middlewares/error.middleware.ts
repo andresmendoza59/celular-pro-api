@@ -12,10 +12,12 @@ export function errorHandler(
     return
   }
 
-  // Errores no controlados: no exponer el stack trace al cliente
-  const isDev = process.env.NODE_ENV === 'development'
+  // Siempre loggear el error completo en consola para diagnóstico
+  console.error('[ERROR 500]', err.message)
+  console.error(err.stack)
+
   res.status(500).json({
     error: 'Error interno del servidor',
-    ...(isDev && { detail: err.message }),
+    detail: err.message, // temporal para diagnóstico
   })
 }

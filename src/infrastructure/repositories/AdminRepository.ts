@@ -36,33 +36,23 @@ export class AdminRepository implements IAdminRepository {
     const now = new Date()
     const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
-    const last7Days = Array.from({ length: 7 }, (_, i) => {
-      const d = new Date(now)
-      d.setDate(d.getDate() - (6 - i))
-      d.setHours(0, 0, 0, 0)
-      return d
-    })
 
-    const [
-      totalUsers,
-      bannedUsers,
-      newUsers,
-      adminUsers,
-      totalPhones,
-      inStockPhones,
-      verifiedPhones,
-      orderStats,
-      revenueThisMonth,
-      recentOrders,
-      dailyRevenue,
-    ] = await Promise.all([
+    // ─── Batch 1: conteos de usuarios y celulares (4 queries) ─────
+    const [totalUsers, bannedUsers, newUsers, adminUsers] = await Promise.all([
       prisma.user.count(),
       prisma.user.count({ where: { banned: true } }),
       prisma.user.count({ where: { createdAt: { gte: weekAgo } } }),
       prisma.user.count({ where: { role: 'ADMIN' } }),
+    ])
+
+    const [totalPhones, inStockPhones, verifiedPhones] = await Promise.all([
       prisma.phone.count(),
       prisma.phone.count({ where: { stock: { gt: 0 } } }),
       prisma.phone.count({ where: { verified: true } }),
+    ])
+
+    // ─── Batch 2: estadísticas de órdenes (3 queries) ─────────────
+    const [orderStats, revenueThisMonth, recentOrders] = await Promise.all([
       prisma.order.groupBy({
         by: ['status'],
         _count: { _all: true },
@@ -77,29 +67,34 @@ export class AdminRepository implements IAdminRepository {
         orderBy: { createdAt: 'desc' },
         include: { _count: { select: { items: true } } },
       }),
-      Promise.all(
-        last7Days.map(async (day) => {
-          const nextDay = new Date(day)
-          nextDay.setDate(nextDay.getDate() + 1)
-          const result = await prisma.order.aggregate({
-            where: {
-              createdAt: { gte: day, lt: nextDay },
-              status: { not: 'CANCELLED' },
-            },
-            _sum: { total: true },
-            _count: { _all: true },
-          })
-          return {
-            date: day.toLocaleDateString('es-CO', {
-              weekday: 'short',
-              day: 'numeric',
-            }),
-            amount: result._sum.total ?? 0,
-            count: result._count._all,
-          }
-        }),
-      ),
     ])
+
+    // ─── Revenue por día: 1 solo query + agrupación en JS ─────────
+    // Antes: 7 queries simultáneos → ahora: 1 query
+    const last7DaysOrders = await prisma.order.findMany({
+      where: { createdAt: { gte: weekAgo }, status: { not: 'CANCELLED' } },
+      select: { total: true, createdAt: true },
+    })
+
+    const last7Days = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(now)
+      d.setDate(d.getDate() - (6 - i))
+      d.setHours(0, 0, 0, 0)
+      return d
+    })
+
+    const dailyRevenue = last7Days.map((day) => {
+      const nextDay = new Date(day)
+      nextDay.setDate(nextDay.getDate() + 1)
+      const dayOrders = last7DaysOrders.filter(
+        (o) => o.createdAt >= day && o.createdAt < nextDay,
+      )
+      return {
+        date: day.toLocaleDateString('es-CO', { weekday: 'short', day: 'numeric' }),
+        amount: dayOrders.reduce((sum, o) => sum + o.total, 0),
+        count: dayOrders.length,
+      }
+    })
 
     const statusMap = Object.fromEntries(
       orderStats.map((s) => [s.status, { count: s._count._all, sum: s._sum.total ?? 0 }]),
