@@ -6,6 +6,9 @@ export interface User {
   name: string
   password: string
   role: Role
+  banned: boolean
+  banReason: string | null
+  bannedAt: Date | null
   createdAt: Date
   updatedAt: Date
 }

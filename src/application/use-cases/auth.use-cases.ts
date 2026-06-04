@@ -30,6 +30,15 @@ export async function loginUser(repo: IUserRepository, data: LoginDto) {
   const validPassword = await bcrypt.compare(data.password, user.password)
   if (!validPassword) throw new AppError('Credenciales inválidas', 401)
 
+  // Usuario baneado no puede ingresar
+  if ((user as { banned?: boolean }).banned) {
+    const reason = (user as { banReason?: string | null }).banReason
+    throw new AppError(
+      `Tu cuenta ha sido suspendida.${reason ? ` Motivo: ${reason}` : ''}`,
+      403,
+    )
+  }
+
   const token = signToken({ id: user.id, role: user.role })
   const { password: _p, ...publicUser } = user
   return { user: publicUser, token }
