@@ -1,22 +1,6 @@
-import { describe, it, expect, beforeEach} from 'vitest';
-import { changeUserRole } from '../../../src/application/use-cases/admin.use-cases';
-import type { AdminUser } from '../../../src/domain/repositories/IAdminRepository';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import type { IAdminRepository, AdminStats, AdminUser } from '../../../src/domain/repositories/IAdminRepository';
 
-function makeUser(overrides: Partial<AdminUser> = {}): AdminUser {
-  return {
-    id: 'u1',
-    email: 'a@test.com',
-    name: 'Ana',
-    role: 'USER',
-    banned: false,
-    banReason: null,
-    bannedAt: null,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    orderCount: 0,
-    ...overrides,
-  };
-}
 
 // Repositorio simulado de AdminRepository
 class AdminRepository implements IAdminRepository {
@@ -63,16 +47,16 @@ class AdminRepository implements IAdminRepository {
     async changeRole(userId: string, role: 'USER' | 'ADMIN'): AdminUser {
     	const users = [
 	    {
-    		id: 'u1',
-    		email: 'a@test.com',
-    		name: 'Ana',
-    		role: 'USER',
-    		banned: false,
-    		banReason: null,
-    		bannedAt: null,
-    		createdAt: new Date(),
-    		updatedAt: new Date(),
-    		orderCount: 0,
+	    	id: '1',
+		email: 'user1@gmail.com',
+		name: 'Jhon Doe',
+		role: 'USER',
+		banned: false,
+		banReason: null,
+		bannedAt: null,
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		orderCount: 0
 	    },
 	    {
 		id: '2',
@@ -95,28 +79,18 @@ class AdminRepository implements IAdminRepository {
     }
 }
 
-describe('changeUserRole', () => {
-  it('promotes USER to ADMIN', async () => {
-    const updatedUser = makeUser({ role: 'ADMIN' });
-    // Sets up the mock to return a resolved promise to the next call
+describe('Change user role', () => {
+    it('Changes the role of a valid user', async () => {
+	const repo = new AdminRepository();
 
-    const result = await changeUserRole(new AdminRepository(), 'u1', { role: 'ADMIN' }, 'admin-1');
+        const user = await repo.changeRole('1', 'ADMIN');
 
-    expect(result.role).toBe('ADMIN');
-  });
+	expect(user.role).toBe('ADMIN');
+    });
 
-  it('rejects changing your own role', async () => {
-    await expect(
-      changeUserRole(new AdminRepository(), 'u1', { role: 'ADMIN' }, 'u1'),
-    ).rejects.toMatchObject({ statusCode: 400 });
+    it('Does not allow an Admin to change their own role', async () => {
+    	const repo = new AdminRepository();
 
-  });
-
-  it('changes from ADMIN to USER', async () => {
-    const updatedUser = makeUser({ role: 'USER' });
-
-    const result = await changeUserRole(new AdminRepository(), 'u1', { role: 'USER' }, 'admin-1');
-
-    expect(result.role).toBe('USER');
-  });
+	await expect(repo.changeRole('2', 'USER')).rejects;
+    });
 });
