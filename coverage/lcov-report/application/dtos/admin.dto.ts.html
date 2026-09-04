@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for interface/middlewares/validate.middleware.ts</title>
+    <title>Code coverage report for application/dtos/admin.dto.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">interface/middlewares</a> validate.middleware.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">application/dtos</a> admin.dto.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -84,66 +84,48 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NextFunction, Request, Response } from 'express'
-import { ZodSchema } from 'zod'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from 'zod'
 &nbsp;
-export function validate(schema: ZodSchema, source: 'body' | 'query' = 'body') {
-  return (req: Request, res: Response, next: NextFunction) =&gt; {
-    const result = schema.safeParse(
-      source === 'body' ? req.body : <span class="branch-1 cbranch-no" title="branch not covered" >req.query,</span>
-    )
+export const banUserDto = z.object({
+  reason: z.string().min(4, 'El motivo debe tener al menos 4 caracteres'),
+})
 &nbsp;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (!result.success) {
-      const errors = result.error.errors.map((e) =&gt; ({
-        field: e.path.join('.'),
-        message: e.message,
-      }))
-      res.status(400).json({ error: 'Datos inválidos', errors })
-      return
-    }
+export const changeRoleDto = z.object({
+  role: z.enum(['USER', 'ADMIN'], {
+    errorMap: () =&gt; ({ message: 'Rol inválido' }),
+  }),
+})
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (source === 'body') {</span>
-<span class="cstat-no" title="statement not covered" >      req.body = result.data</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      req.query = result.data as Record&lt;string, string&gt;</span>
-    }
+export const adminUsersQueryDto = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  limit: z.coerce.number().int().positive().max(50).default(20),
+  search: z.string().optional(),
+})
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    next()</span>
-  }
-}
+export type BanUserDto = z.infer&lt;typeof banUserDto&gt;
+export type ChangeRoleDto = z.infer&lt;typeof changeRoleDto&gt;
+export type AdminUsersQueryDto = z.infer&lt;typeof adminUsersQueryDto&gt;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -151,7 +133,7 @@ export function validate(schema: ZodSchema, source: 'body' | 'query' = 'body') {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-04T23:33:32.868Z
+                at 2026-09-04T23:54:59.084Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
