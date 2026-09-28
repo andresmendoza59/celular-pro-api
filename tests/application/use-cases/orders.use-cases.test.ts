@@ -57,6 +57,7 @@ describe('createOrder', () => {
     vi.resetAllMocks();
   });
 
+  // Regression test
   it('creates an order with userId', async () => {
     const orderData = makeOrderData();
     const createdOrder = makeCreatedOrder(orderData, 'u1');
@@ -156,6 +157,7 @@ describe('getMyOrders', () => {
     vi.resetAllMocks();
   });
 
+  // Regression test
   it('returns all orders for the given user', async () => {
     const userOrders = [
       makeCreatedOrder(makeOrderData(), 'u1'),
