@@ -187,6 +187,7 @@ describe('getAllOrders', () => {
     vi.resetAllMocks();
   });
 
+  // Regression test
   it('returns a paginated list of orders', async () => {
     const paginated = {
       data: [
@@ -211,6 +212,7 @@ describe('updateOrderStatus', () => {
     vi.resetAllMocks();
   });
 
+  // Regression test
   it('updates the status of an existing order', async () => {
     const order = makeCreatedOrder(makeOrderData(), 'u1');
     mockRepo.findById.mockResolvedValueOnce(order);
