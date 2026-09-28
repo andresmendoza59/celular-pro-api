@@ -168,6 +168,7 @@ beforeEach(() => {
 });
 
 describe('getPhoneBySlug — obtener un celular por su slug', () => {
+  // Regression test
   it('returns the phone when the slug exists', async () => {
     const telefonos = [
       makePhone({ id: 'p1', slug: 'iphone-15', name: 'iPhone 15' }),

@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
  * PUT /api/v1/admin/users/:id/ban
  *
  * Una prueba por cada camino básico del grafo de flujo.
- * V(G) = 7, así que son 7 caminos.
+ * V(G) = 7, así que son 7 caminos
  *
  * La suite NO depende de una base de datos ni de variables de entorno:
  * - La capa de datos (Prisma) se reemplaza con un mock que nunca abre

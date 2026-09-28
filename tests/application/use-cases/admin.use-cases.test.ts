@@ -96,6 +96,7 @@ class AdminRepository implements IAdminRepository {
 }
 
 describe('changeUserRole', () => {
+  // Regression test
   it('promotes USER to ADMIN', async () => {
     const updatedUser = makeUser({ role: 'ADMIN' });
     // Sets up the mock to return a resolved promise to the next call
