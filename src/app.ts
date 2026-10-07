@@ -3,7 +3,7 @@ import express from 'express'
 import { errorHandler } from './interface/middlewares/error.middleware'
 import routes from './interface/routes'
 
-const app = express()
+export const app = express()
 app.disable("x-powered-by")
 
 app.use(
